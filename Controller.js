@@ -6,7 +6,7 @@ let controllers = {
     },
     //保存记录
     saveData : function(req,res){
-
+        console.log(req.body);
     },
     //获取记录
     getData: function(req,res){
