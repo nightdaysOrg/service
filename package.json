@@ -1,0 +1,22 @@
+{
+  "name": "service",
+  "version": "1.0.0",
+  "description": "node后端的服务就写于此",
+  "main": "Controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nightdaysOrg/service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nightdaysOrg/service/issues"
+  },
+  "homepage": "https://github.com/nightdaysOrg/service#readme",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
