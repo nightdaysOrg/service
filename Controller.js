@@ -1,3 +1,4 @@
+let qs= require("querystring")
 let controllers = {
 
     test: function (req, res) {
@@ -15,8 +16,8 @@ let controllers = {
         });
     },
     login(req, res) {
-        console.log("test login");
         req.on("data", (data) => {
+            console.log(qs.parse(data.toString()));
             var str = data.toString();
             var obj = qs.parse(str);
             var uname = obj.uname;
