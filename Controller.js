@@ -15,6 +15,7 @@ let controllers = {
         });
     },
     login(req, res) {
+        console.log("test login");
         req.on("data", (data) => {
             var str = data.toString();
             var obj = qs.parse(str);
