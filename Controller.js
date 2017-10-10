@@ -17,7 +17,7 @@ let controllers = {
         });
     },
     login(req, res) {
-        console.log(req.data);
+        console.log(req);
         req.on("data", (data) => {
             console.log(data.toString());
             var str = data.toString();
