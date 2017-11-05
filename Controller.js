@@ -25,7 +25,6 @@ let controllers = {
     },
     login(req, res) {
         console.log(req.query);
-        res.send({req:req.query})
         var uname = req.query.uname;
         var upwd = req.query.upwd;
 
@@ -67,7 +66,7 @@ let controllers = {
                 ], (err, result) => {
                     if (err) {
                         console.log(err + " query")
-                        // res.send(err);     这里有错
+                         res.send("err");     //这里有错
                     } else {
                         console.log(result)
                     }
