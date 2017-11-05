@@ -55,7 +55,7 @@ let controllers = {
 
         var uname = req.query.uname;
         var upwd = req.query.upwd;
-        var sql = "insert into timetimeuser values(null,?,password(?))";
+        var sql = "insert into timeuser values(null,?,password(?))";
 
         pool.getConnection((err, conn) => {
             if (err) {
