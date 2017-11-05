@@ -29,7 +29,7 @@ let controllers = {
         var uname = req.query.uname;
         var upwd = req.query.upwd;
 
-        var sql = "select * from timetimeuser where uname=? and upwd=password(?)";
+        var sql = "select * from timetimeuser where uname=? and upwd=?";
 
         pool.getConnection((err, conn) => {
             if (err) {
@@ -55,7 +55,7 @@ let controllers = {
 
         var uname = req.query.uname;
         var upwd = req.query.upwd;
-        var sql = "insert into timeuser values(null,?,password(?))";
+        var sql = "insert into timeuser values(null,?,?)";
 
         pool.getConnection((err, conn) => {
             if (err) {
