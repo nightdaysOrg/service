@@ -1,4 +1,14 @@
-let qs= require("querystring")
+let qs = require("querystring")
+let mysql = require("mysql")
+var pool = mysql.createPool({
+    host: "120.24.235.91",
+    user: "root",
+    password: "Nuoyadb_1",
+    database: "timetotime",
+    port: 3306,
+    connectionLimit: 10
+});
+
 let controllers = {
 
     test: function (req, res) {
@@ -11,50 +21,61 @@ let controllers = {
     },
     //获取记录
     getData: function (req, res) {
-        res.send({
-            name: 123,
-            age: 234
-        });
+        res.send({name: 123, age: 234});
     },
     login(req, res) {
         console.log(req.query);
         res.send(req.query)
-        req.on("data", (data) => {
-            console.log(data.toString());
-            var str = data.toString();
-            var obj = qs.parse(str);
-            var uname = obj.uname;
-            var upwd = obj.upwd;
+        var uname = req.query.uname;
+        var upwd = req.query.upwd;
 
-            var sql = "select * from timetimeuser where uname=password(?) and upwd=?";
+        var sql = "select * from timetimeuser where uname=? and upwd=password(?)";
 
-            pool.getConnection((err, conn) => {
-                if (err) {
-                    console.log(err + " GetConnect")
-                } else {
-                    console.log("sueecss");
-                    conn.query(sql, [uname, upwd], (err, result) => {
-                        if (err) {
-                            console.log(err + " query")
-                        } else {
-                            console.log(result)
-                        }
-                        conn.release()
-                    })
-                }
-            })
+        pool.getConnection((err, conn) => {
+            if (err) {
+                console.log(err + " GetConnect")
+            } else {
+                console.log("sueecss");
+                conn.query(sql, [
+                    uname, upwd
+                ], (err, result) => {
+                    if (err) {
+                        console.log(err + " query")
+                    } else {
+                        console.log(result)
+                    }
+                    conn.release()
+                })
+            }
         })
-    }
+    }, //login end
+    signin(req, res) {
+        console.log(req.query);
+        res.send(req.query)
 
+        var uname = req.query.uname;
+        var upwd = req.query.upwd;
+        var sql = "insert into timetimeuser values(null,?,password(?))";
 
-
-
-
-
-
-
-}
-
+        pool.getConnection((err, conn) => {
+            if (err) {
+                console.log(err + " GetConnect")
+            } else {
+                console.log("sueecss");
+                conn.query(sql, [
+                    uname, upwd
+                ], (err, result) => {
+                    if (err) {
+                        console.log(err + " query")
+                    } else {
+                        console.log(result)
+                    }
+                    conn.release()
+                })
+            }
+        })
+    }// signin end
+} //controllers end
 
 module.exports = {
     root: 'wechat',
