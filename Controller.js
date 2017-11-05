@@ -25,7 +25,7 @@ let controllers = {
     },
     login(req, res) {
         console.log(req.query);
-        res.send(req.query)
+        res.send({req:req.query})
         var uname = req.query.uname;
         var upwd = req.query.upwd;
 
