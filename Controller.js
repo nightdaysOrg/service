@@ -66,7 +66,7 @@ let controllers = {
                 ], (err, result) => {
                     if (err) {
                         console.log(err + " query")
-                         res.send("err");     //这里有错
+                         res.send({"e":"err"});     //这里有错
                     } else {
                         console.log(result)
                     }
