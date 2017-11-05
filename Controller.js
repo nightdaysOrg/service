@@ -67,6 +67,7 @@ let controllers = {
                 ], (err, result) => {
                     if (err) {
                         console.log(err + " query")
+                        res.send(err);
                     } else {
                         console.log(result)
                     }
